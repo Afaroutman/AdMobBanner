@@ -17,7 +17,9 @@ package com.google.android.gms.example.bannerexample;
 /**
  * How the computer knows what your talking about so you dont look crazy
  */
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +45,8 @@ public class AdTrial extends ActionBarActivity
     private RelativeLayout background;
     private TextView monsterText;
     private CheckBox YMonster;
+    private MediaPlayer zelda;
+    private MediaPlayer dying;
 
 
     @Override
@@ -74,6 +78,10 @@ public class AdTrial extends ActionBarActivity
         background = (RelativeLayout) findViewById(R.id.Background);
         monsterText = (TextView) findViewById(R.id.monsterText);
         YMonster = (CheckBox) findViewById(R.id.YMonster);
+        zelda = MediaPlayer.create(this.getBaseContext(), R.raw.zelda);
+        dying = MediaPlayer.create(this.getBaseContext(), R.raw.death);
+
+
 
         /**
          * assigning a important method so that you can use buttons
@@ -93,27 +101,41 @@ public class AdTrial extends ActionBarActivity
             @Override
             public void onClick(View v)
             {
+                //this if parts work but the else doesn't
                 boolean checkMonster = YMonster.isChecked();
                 if(checkMonster == true)
                 {
                     background.setBackgroundColor(Color.rgb(0,255,0));
                     monsterText.setText("You saved yourself!");
+                    zelda.start();
                 }
+                //what happens is it waits till after 8 seconds to do everything instead of doing
+                // it than waiting 8 seconds
                 else
                 {
-                    background.setBackgroundColor(Color.rgb(255, 0, 0));
                     monsterText.setText("You monster!");
+                    background.setBackgroundColor(Color.rgb(255, 0, 0));
+                    dying.start();
 
-                    try {
-                        Thread.sleep(1500);
-                    } catch (InterruptedException e) {
+                    try
+                    {
+                        //Ive tried putting the code above in here
+                        Thread.sleep(8000);
+                        //and putting all the stop stuff here
+                        //no luck.... 
+                    }
+                    catch (InterruptedException e)
+                    {
                         e.printStackTrace();
                     }
+                    dying.stop();
                     finish();
+
                 }
 
-
             }
+
+
         });
 
     }

@@ -49,4 +49,12 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
 
+    <MediaController
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/zelda"
+        android:layout_above="@+id/money"
+        android:layout_alignLeft="@+id/YMonster"
+        android:layout_alignStart="@+id/YMonster"/>
+
 </RelativeLayout>
