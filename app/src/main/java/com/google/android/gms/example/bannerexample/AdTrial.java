@@ -27,6 +27,8 @@ import android.view.View;
 import android.widget.*;
 import android.graphics.Color;
 
+import java.nio.charset.CharacterCodingException;
+
 
 /**
  * Main Activity. Inflates main activity xml and child fragments.
@@ -40,6 +42,7 @@ public class AdTrial extends ActionBarActivity
     private Button monsterButton;
     private RelativeLayout background;
     private TextView monsterText;
+    private CheckBox YMonster;
 
 
     @Override
@@ -53,7 +56,7 @@ public class AdTrial extends ActionBarActivity
 
         // Gets the ad view defined in layout/ad_fragment.xml with ad unit ID set in
         // values/strings.xml.
-        trialAd = (AdView) findViewById(R.id.ad_view);
+        trialAd = (AdView) findViewById(R.id.money);
 
         // Create an ad request. Check your logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
@@ -67,9 +70,10 @@ public class AdTrial extends ActionBarActivity
         /**
          * combining the variable with the buttons and such
          */
-        monsterButton = (Button) findViewById(R.id.Random);
+        monsterButton = (Button) findViewById(R.id.monsterButton);
         background = (RelativeLayout) findViewById(R.id.Background);
         monsterText = (TextView) findViewById(R.id.monsterText);
+        YMonster = (CheckBox) findViewById(R.id.YMonster);
 
         /**
          * assigning a important method so that you can use buttons
@@ -83,24 +87,37 @@ public class AdTrial extends ActionBarActivity
          * this (after you press the button) will change the background to red and change the
          * text to 'You monster' then force closes
          */
-    monsterButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            background.setBackgroundColor(Color.rgb(255, 0, 0));
-            monsterText.setText("You monster!");
-            try
-            {
-                Thread.sleep(1500);
-            }
-            catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-            finish();
+        monsterButton.setOnClickListener(new View.OnClickListener()
+        {
 
-        }
-    });
+            @Override
+            public void onClick(View v)
+            {
+                boolean checkMonster = YMonster.isChecked();
+                if(checkMonster == true)
+                {
+                    background.setBackgroundColor(Color.rgb(0,255,0));
+                    monsterText.setText("You saved yourself!");
+                }
+                else
+                {
+                    background.setBackgroundColor(Color.rgb(255, 0, 0));
+                    monsterText.setText("You monster!");
+
+                    try {
+                        Thread.sleep(1500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    finish();
+                }
+
+
+            }
+        });
+
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {

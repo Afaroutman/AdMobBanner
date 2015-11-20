@@ -9,7 +9,7 @@
     tools:ignore="MergeRootFrame">
 
     <com.google.android.gms.ads.AdView
-        android:id="@+id/ad_view"
+        android:id="@+id/money"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/Press"
-        android:id="@+id/monster"
+        android:id="@+id/monsterText"
         android:textColor="#ffffff"
         android:textSize="24sp"
         android:singleLine="false"
@@ -37,9 +37,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Surprising discovery"
-        android:id="@+id/Random"
-        android:layout_below="@+id/monster"
+        android:id="@+id/monsterButton"
+        android:layout_below="@+id/monsterText"
         android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check if you like legend of zelda"
+        android:id="@+id/YMonster"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
 <!-- From: file:/Users/ahit0637/AndroidStudioProjects/AdMobBanner/app/src/main/res/layout/activity_ads.xml -->

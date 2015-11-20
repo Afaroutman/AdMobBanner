@@ -41,4 +41,12 @@
         android:layout_below="@+id/monsterText"
         android:layout_centerHorizontal="true" />
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check if you like legend of zelda"
+        android:id="@+id/YMonster"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
